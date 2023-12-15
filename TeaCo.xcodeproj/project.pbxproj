@@ -24,9 +24,7 @@
 		A41308F22ADF0A9900ADCA31 /* ItemEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41308F12ADF0A9900ADCA31 /* ItemEdit.swift */; };
 		A41308F42ADF0AAF00ADCA31 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41308F32ADF0AAF00ADCA31 /* TextBox.swift */; };
 		A41308F62ADF0ADA00ADCA31 /* EditFalse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41308F52ADF0ADA00ADCA31 /* EditFalse.swift */; };
-		A41308F82ADF0AEA00ADCA31 /* ItemDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41308F72ADF0AEA00ADCA31 /* ItemDefault.swift */; };
 		A41308FB2ADF0AFE00ADCA31 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41308FA2ADF0AFE00ADCA31 /* LoginView.swift */; };
-		A42D004D2B224750006436E8 /* FirebaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D004C2B22474F006436E8 /* FirebaseStorage.swift */; };
 		A4479D7E2AE07816004178C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4479D7D2AE07816004178C6 /* GoogleService-Info.plist */; };
 		A4479D932AE079A5004178C6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A4479D922AE079A5004178C6 /* FirebaseDatabase */; };
 		A4479D952AE079A5004178C6 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4479D942AE079A5004178C6 /* FirebaseDatabaseSwift */; };
@@ -55,9 +53,7 @@
 		A41308F12ADF0A9900ADCA31 /* ItemEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEdit.swift; sourceTree = "<group>"; };
 		A41308F32ADF0AAF00ADCA31 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
 		A41308F52ADF0ADA00ADCA31 /* EditFalse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFalse.swift; sourceTree = "<group>"; };
-		A41308F72ADF0AEA00ADCA31 /* ItemDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDefault.swift; sourceTree = "<group>"; };
 		A41308FA2ADF0AFE00ADCA31 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A42D004C2B22474F006436E8 /* FirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorage.swift; sourceTree = "<group>"; };
 		A4479D7D2AE07816004178C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +99,6 @@
 				A41308D42ADF090000ADCA31 /* Cash */,
 				A41308D22ADF08D400ADCA31 /* ViewRouter.swift */,
 				A41308C32ADF07ED00ADCA31 /* TeaCoApp.swift */,
-				A42D004C2B22474F006436E8 /* FirebaseStorage.swift */,
 				A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */,
 				A41308C52ADF07ED00ADCA31 /* ContentView.swift */,
 				A41308C72ADF07EF00ADCA31 /* Assets.xcassets */,
@@ -152,8 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				A41308E22ADF09DA00ADCA31 /* Coins.swift */,
-				A41308E02ADF09BC00ADCA31 /* PayView.swift */,
 				A41308E42ADF0A0200ADCA31 /* Dollars.swift */,
+				A41308E02ADF09BC00ADCA31 /* PayView.swift */,
 			);
 			path = Pay;
 			sourceTree = "<group>";
@@ -180,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				A41308F52ADF0ADA00ADCA31 /* EditFalse.swift */,
-				A41308F72ADF0AEA00ADCA31 /* ItemDefault.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -283,12 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A41308F82ADF0AEA00ADCA31 /* ItemDefault.swift in Sources */,
 				A41308E12ADF09BC00ADCA31 /* PayView.swift in Sources */,
 				A41308DB2ADF097500ADCA31 /* ChangeView.swift in Sources */,
 				A41308ED2ADF0A6D00ADCA31 /* EditView.swift in Sources */,
 				A41308E32ADF09DA00ADCA31 /* Coins.swift in Sources */,
-				A42D004D2B224750006436E8 /* FirebaseStorage.swift in Sources */,
 				A41308D32ADF08D400ADCA31 /* ViewRouter.swift in Sources */,
 				A41308DD2ADF098900ADCA31 /* Item.swift in Sources */,
 				A4F6A7782B1522CC0044EBD5 /* ImagePicker.swift in Sources */,

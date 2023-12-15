@@ -1,7 +1,9 @@
 import SwiftUI
 
-struct OneDollar: View {
-    var body: some View {
+struct OneDollar: View 
+{
+    var body: some View
+    {
         Image("OneDollar")
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -10,8 +12,10 @@ struct OneDollar: View {
     }
 }
 
-struct FiveDollar: View {
-    var body: some View {
+struct FiveDollar: View 
+{
+    var body: some View 
+    {
         Image("FiveDollar")
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -20,8 +24,10 @@ struct FiveDollar: View {
     }
 }
 
-struct TenDollar: View {
-    var body: some View {
+struct TenDollar: View 
+{
+    var body: some View 
+    {
         Image("TenDollar")
             .resizable()
             .aspectRatio(contentMode: .fill)
@@ -30,8 +36,10 @@ struct TenDollar: View {
     }
 }
 
-struct TwentyDollar: View {
-    var body: some View {
+struct TwentyDollar: View 
+{
+    var body: some View 
+    {
         Image("TwentyDollar")
             .resizable()
             .aspectRatio(contentMode: .fill)

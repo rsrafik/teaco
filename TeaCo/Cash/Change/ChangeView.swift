@@ -5,12 +5,14 @@ struct ChangeView: View {
     @EnvironmentObject var changeDue: ChangeDue
     @State var seriesImage: [AnyView] = []
     let columns: [GridItem] = [
-           GridItem(.flexible()),
-           GridItem(.flexible())
-       ]
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
-    var body: some View {
-        VStack {
+    var body: some View
+    {
+        VStack
+        {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, maxHeight: 164)
@@ -25,53 +27,59 @@ struct ChangeView: View {
                         .frame(width: 447, height: 106, alignment: .leading)
                 )
             
-            ZStack {
-                            ScrollView {
-                                LazyVGrid(columns: columns, spacing: 20) {
-                                    ForEach(0..<seriesImage.count, id: \.self) { index in
-                                        seriesImage[index]
-                                    }
-                                }
-                                .padding(.top,20)
-                            }
-                            
-                            VStack {
-                                Spacer()
-                                HStack {
-                                    Spacer()
-                                    Rectangle()
-                                        .foregroundColor(.clear)
-                                        .frame(width: 372, height: 93)
-                                        .background(Color(red: 0.99, green: 0.4, blue: 0.1))
-                                        .cornerRadius(37.08609)
-                                        // ... [Your other shadow properties and overlay here]
-                                    
-                                        .shadow(color: .black.opacity(0.13), radius: 2, x: -1, y: 1)
-                                                            .shadow(color: .black.opacity(0.11), radius: 3, x: -3, y: 5)
-                                                            .shadow(color: .black.opacity(0.07), radius: 4.5, x: -8, y: 12)
-                                                            .shadow(color: .black.opacity(0.02), radius: 5, x: -14, y: 22)
-                                                            .shadow(color: .black.opacity(0), radius: 5.5, x: -22, y: 34)
-                                                            .overlay(
-                                                                Text("NEW ORDER")
-                                                                    .font(Font.custom("Inter", size: 50))
-                                                                    .multilineTextAlignment(.center)
-                                                                    .foregroundColor(.white)
-                                                                    .frame(width: 372, height: 39, alignment: .center)
-                                                            )
-                                        .padding(.trailing,50)
-                                        .padding(.bottom,50)
-                                        .onTapGesture {
-                                            viewRouter.currentPage = .cashcred
-                                        }
-                                }
-                            }
+            ZStack
+            {
+                ScrollView
+                {
+                    LazyVGrid(columns: columns, spacing: 20)
+                    {
+                        ForEach(0..<seriesImage.count, id: \.self)
+                        { index in
+                            seriesImage[index]
                         }
-        }
-        .onAppear {
-                        iterate(i: changeDue.changeDue)
                     }
+                    .padding(.top,20)
+                }
+                
+                VStack
+                {
+                    Spacer()
+                    
+                    HStack
+                    {
+                        Spacer()
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(width: 372, height: 93)
+                            .background(Color(red: 0.99, green: 0.4, blue: 0.1))
+                            .cornerRadius(37.08609)
+                            .shadow(color: .black.opacity(0.13), radius: 2, x: -1, y: 1)
+                            .shadow(color: .black.opacity(0.11), radius: 3, x: -3, y: 5)
+                            .shadow(color: .black.opacity(0.07), radius: 4.5, x: -8, y: 12)
+                            .shadow(color: .black.opacity(0.02), radius: 5, x: -14, y: 22)
+                            .shadow(color: .black.opacity(0), radius: 5.5, x: -22, y: 34)
+                            .overlay(
+                                Text("NEW ORDER")
+                                    .font(Font.custom("Inter", size: 50))
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.white)
+                                    .frame(width: 372, height: 39, alignment: .center)
+                            )
+                            .padding(.trailing,50)
+                            .padding(.bottom,50)
+                            .onTapGesture
+                        {
+                            viewRouter.currentPage = .cashcred
+                        }
+                    }
+                }
+            }
+        }
+        .onAppear
+        {
+            iterate(i: changeDue.changeDue)
+        }
     }
-    
     
     func iterate(i: Double)
     {
@@ -125,7 +133,6 @@ struct ChangeView: View {
             }
         }
     }
-        
 }
 
 

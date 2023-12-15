@@ -3,52 +3,61 @@ import PhotosUI
 
 import PhotosUI
 
-struct ItemEdit: View {
-    @State private var isClicked = false
+struct ItemEdit: View 
+{
+    
+    @EnvironmentObject var productData: ProductData
     @StateObject private var photoSelectorVM = PhotoSelectorViewModel()
+    @State private var isClicked = false
     @Binding var data: CustomData
     var onDelete: (() -> Void)?
-    @EnvironmentObject var productData: ProductData
-    
 
     var body: some View {
-        VStack {
-            HStack {
+        VStack 
+        {
+            HStack 
+            {
                 PhotosPicker(
                     selection: $photoSelectorVM.selectedPhotos,
                     maxSelectionCount: 1,
                     matching: .images
-                ) {
+                ) 
+                {
                     Image("Plus")
                         .frame(width: 30, height: 30)
                         .offset(y: 25)
                         .offset(x: -5)
                 }
-                .onChange(of: photoSelectorVM.selectedPhotos) { _ in
-                    Task {
+                .onChange(of: photoSelectorVM.selectedPhotos) 
+                { _ in
+                    Task
+                    {
                         print(photoSelectorVM.selectedPhotos)
                         await photoSelectorVM.convertDataToImage()
                     }
                 }
                 
-
                 Spacer()
 
                 Image("Minus")
                     .offset(y: 25)
                     .offset(x: 5)
-                    .onTapGesture {
+                    .onTapGesture 
+                    {
                         onDelete?()
                     }
             }
             .zIndex(2)
 
-            Group {
-                if let image = photoSelectorVM.images.first {
+            Group 
+            {
+                if let image = photoSelectorVM.images.first 
+                {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
-                } else {
+                } else 
+                {
                     Rectangle()
                         .foregroundColor(.clear)
                         .background(Color(red: 0.85, green: 0.85, blue: 0.85))
@@ -68,11 +77,14 @@ struct ItemEdit: View {
                     .inset(by: 1.5)
                     .stroke(Color(red: 0, green: 0.48, blue: 1), lineWidth: isClicked ? 3 : 0)
             )
-            .onTapGesture {
+            .onTapGesture 
+            {
                 isClicked.toggle()
-                if isClicked {
+                if isClicked 
+                {
                     productData.selectedProducts.append(data)
-                } else {
+                } else 
+                {
                     productData.selectedProducts.removeAll { $0.id == data.id }
                 }
             }

@@ -1,20 +1,26 @@
 import SwiftUI
 import PhotosUI
 
-class PhotoSelectorViewModel: ObservableObject {
+class PhotoSelectorViewModel: ObservableObject 
+{
     @Published var images = [UIImage]()
     @Published var selectedPhotos = [PhotosPickerItem]()
     
     @MainActor
-    func convertDataToImage() {
+    func convertDataToImage() 
+    {
         // reset the images array before adding more/new photos
         images.removeAll()
         
-        if !selectedPhotos.isEmpty {
-            for eachItem in selectedPhotos {
+        if !selectedPhotos.isEmpty 
+        {
+            for eachItem in selectedPhotos 
+            {
                 Task {
-                    if let imageData = try? await eachItem.loadTransferable(type: Data.self) {
-                        if let image = UIImage(data: imageData) {
+                    if let imageData = try? await eachItem.loadTransferable(type: Data.self) 
+                    {
+                        if let image = UIImage(data: imageData) 
+                        {
                             images.append(image)
                         }
                     }
@@ -26,15 +32,20 @@ class PhotoSelectorViewModel: ObservableObject {
     }
 }
 
-struct PhotoSelectorView: View {
+struct PhotoSelectorView: View 
+{
     @StateObject var vm = PhotoSelectorViewModel()
     let maxPhotosToSelect = 1
     
-    var body: some View {
-        VStack {
-            ScrollView(.horizontal) {
+    var body: some View 
+    {
+        VStack 
+        {
+            ScrollView(.horizontal) 
+            {
                 LazyHGrid(rows: [GridItem(.fixed(300))]) {
-                    ForEach(0..<vm.images.count, id: \.self) { index in
+                    ForEach(0..<vm.images.count, id: \.self) 
+                    { index in
                         Image(uiImage: vm.images[index])
                             .resizable()
                             .scaledToFit()
@@ -46,7 +57,8 @@ struct PhotoSelectorView: View {
                 maxSelectionCount: maxPhotosToSelect, // sets the max number of photos the user can select
                 selectionBehavior: .ordered, // ensures we get the photos in the same order that the user selected them
                 matching: .images // filter the photos library to only show images
-            ) {
+            ) 
+            {
                 // this label changes the text of photo to match either the plural or singular case based on the value in maxPhotosToSelect
                 Label("Select up to ^[\(maxPhotosToSelect) photo](inflect: true)", systemImage: "photo")
             }

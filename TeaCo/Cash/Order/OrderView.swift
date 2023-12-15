@@ -7,9 +7,11 @@ struct OrderView: View {
     @State var total:Double = 0
     @EnvironmentObject var amountDue: AmountDue
     
-    func sumOrder() -> Double {
+    func sumOrder() -> Double 
+    {
         var tot: Double = 0
-        for order in owed {
+        for order in owed 
+        {
             tot += order.price
         }
         return tot
@@ -18,11 +20,15 @@ struct OrderView: View {
     
     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
-    var body: some View {
-        VStack {
-            HStack {
+    var body: some View 
+    {
+        VStack 
+        {
+            HStack 
+            {
                 Text("< BACK to payment")
-                    .onTapGesture {
+                    .onTapGesture 
+                    {
                         viewRouter.currentPage = .cashcred
                     }
                     .font(Font.custom("Inter", size: 25))
@@ -44,7 +50,8 @@ struct OrderView: View {
                             .foregroundColor(.white)
                             .frame(width: 151, height: 34, alignment: .center)
                             .padding(.top, 5)
-                            .onTapGesture {
+                            .onTapGesture 
+                            {
                                 owed.removeAll()
                             }
                     )
@@ -60,11 +67,14 @@ struct OrderView: View {
                     .background(.clear)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .overlay(
-                        ScrollView {
+                        ScrollView 
+                        {
                             LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(products) { product in
+                                ForEach(products) 
+                                { product in
                                     Item(data: product)
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             owed.append(Order(id: product.name, price: product.price))
                                             
                                         }
@@ -73,8 +83,8 @@ struct OrderView: View {
                             }
                             .padding()
                         }
-                        .onAppear {
-                            // Assuming you have a predefined school name
+                        .onAppear 
+                            {
                             loadData(school: "Hersey") { loadedProducts in
                                 self.products = loadedProducts
                             }
@@ -93,8 +103,10 @@ struct OrderView: View {
                     .shadow(color: .black.opacity(0.03), radius: 5.5, x: -7, y: 26)
                     .shadow(color: .black.opacity(0), radius: 6, x: -10, y: 40)
                     .overlay(
-                        ScrollView {
-                            VStack {
+                        ScrollView 
+                        {
+                            VStack 
+                            {
                                 ForEach(0..<owed.count, id: \.self) { index in
                                     RoundedRectangle(cornerRadius: 10)
                                         .frame(width: 300, height: 50)
@@ -105,7 +117,6 @@ struct OrderView: View {
                                                 .padding()
                                                 .foregroundColor(.white)
                                         )
-                                    
                                 }
                             }
                         }
@@ -127,15 +138,16 @@ struct OrderView: View {
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, maxHeight: 164)
                 .background(Color(red: 0.32, green: 0.21, blue: 0.16))
-                .overlay {
-                    HStack{
+                .overlay 
+                {
+                    HStack
+                    {
                         Image("Huskie")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 114, height: 126.2000961303711)
                             .clipped()
                             .padding(.horizontal, 40)
-                        
                         
                         Text("Due: \(String(format: "$%.2f", sumOrder()))")
                             .font(
@@ -171,7 +183,8 @@ struct OrderView: View {
     }
 }
 
-struct Order: Identifiable {
+struct Order: Identifiable 
+{
     var id: String
     var price: Double
 }

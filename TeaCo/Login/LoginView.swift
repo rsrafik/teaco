@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct LoginView: View {
+struct LoginView: View 
+{
     @StateObject var viewRouter:ViewRouter
     
     @State var selected = false;
@@ -9,7 +10,6 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            //select school title
             Text("Select School")
                 .font(
                     Font.custom("Inter-Bold", size: 35)
@@ -20,9 +20,10 @@ struct LoginView: View {
                 .frame(width: 368, height: 51, alignment: .top)
                 .padding(.top, 100)
             
-            //dropdown menu
-            ZStack {
-                if selected == false {
+            ZStack 
+            {
+                if selected == false 
+                {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 368, height: 59)
@@ -34,7 +35,8 @@ struct LoginView: View {
                                 .stroke(Color(red: 0.55, green: 0.55, blue: 0.55), lineWidth: 3)
                         )
                     
-                    HStack {
+                    HStack 
+                    {
                         Text(schoolClicked)
                             .font(Font.custom("Inter-Regular", size: 25))
                             .foregroundColor(Color(red: 0.68, green: 0.68, blue: 0.68))
@@ -44,14 +46,16 @@ struct LoginView: View {
                         Image("Unequip")
                             .frame(width: 28.29016, height: 22.5)
                             .padding(.trailing)
-                            .onTapGesture {
+                            .onTapGesture 
+                            {
                                 selected = !selected
                                 
                             }
                     }
                 }
                 
-                if selected == true {
+                if selected == true 
+                {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 368, height: 334)
@@ -71,7 +75,8 @@ struct LoginView: View {
                         .offset(y:137)
                         .overlay(
                             VStack (spacing: 0){
-                                HStack {
+                                HStack 
+                                {
                                     Text(schoolClicked)
                                         .font(Font.custom("Inter-Regular", size: 25))
                                         .foregroundColor(Color(red: 0.68, green: 0.68, blue: 0.68))
@@ -79,10 +84,12 @@ struct LoginView: View {
                                         .padding(.leading, 20)
                                     
                                     Spacer()
+                                    
                                     Image("Equip")
                                         .frame(width: 28.29016, height: 22.5)
                                         .padding(.trailing)
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             selected = !selected
                                         }
                                 }
@@ -96,26 +103,32 @@ struct LoginView: View {
                                             .stroke(Color(red: 0.55, green: 0.55, blue: 0.55), lineWidth: 3)
                                     )
                                     .overlay (
-                                        HStack{
+                                        HStack
+                                        {
                                             Text("John Hersey")
                                                 .font(Font.custom("Inter", size: 25))
                                                 .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
                                                 .frame(width: 241, height: 34, alignment: .leading)
                                                 .padding(.leading, 20)
                                                 .padding(.top, 4)
+                                            
                                             Spacer()
+                                            
                                         }
                                         
                                     )
-                                    .onTapGesture {
-                                        
+                                    .onTapGesture 
+                                    {
                                         selected = false
-                                        if schoolClicked == "John Hersey" {
+                                        if schoolClicked == "John Hersey" 
+                                        {
                                             schoolClicked = "no school selected"
-                                        } else {
+                                        } else 
+                                        {
                                             schoolClicked = "John Hersey"
                                         }
                                     }
+                                
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 362, height: 43)
@@ -128,18 +141,24 @@ struct LoginView: View {
                                                 .frame(width: 241, height: 34, alignment: .leading)
                                                 .padding(.leading, 20)
                                                 .padding(.top, 4)
+                                            
                                             Spacer()
+                                            
                                         }
                                         
                                     )
-                                    .onTapGesture {
-                                        if schoolClicked == "Buffalo Grove" {
+                                    .onTapGesture 
+                                    {
+                                        if schoolClicked == "Buffalo Grove" 
+                                        {
                                             schoolClicked = "no school selected"
-                                        } else {
+                                        } else 
+                                        {
                                             schoolClicked = "Buffalo Grove"
                                         }
                                         selected = false
                                     }
+                                
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 368, height: 48)
@@ -161,10 +180,13 @@ struct LoginView: View {
                                         }
                                         
                                     )
-                                    .onTapGesture {
-                                        if schoolClicked == "Prospect" {
+                                    .onTapGesture 
+                                    {
+                                        if schoolClicked == "Prospect" 
+                                        {
                                             schoolClicked = "no school selected"
-                                        } else {
+                                        } else 
+                                        {
                                             schoolClicked = "Prospect"
                                         }
                                         selected = false
@@ -175,7 +197,8 @@ struct LoginView: View {
                                     .frame(width: 362, height: 43)
                                     .background(Color(red: 0.85, green: 0.85, blue: 0.85))
                                     .overlay (
-                                        HStack{
+                                        HStack
+                                        {
                                             Text("Rolling Meadows")
                                                 .font(Font.custom("Inter", size: 25))
                                                 .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
@@ -186,10 +209,13 @@ struct LoginView: View {
                                         }
                                         
                                     )
-                                    .onTapGesture {
-                                        if schoolClicked == "Rolling Meadows" {
+                                    .onTapGesture 
+                                    {
+                                        if schoolClicked == "Rolling Meadows" 
+                                        {
                                             schoolClicked = "no school selected"
-                                        } else {
+                                        } else 
+                                        {
                                             schoolClicked = "Rolling Meadows"
                                         }
                                         selected = false
@@ -212,14 +238,18 @@ struct LoginView: View {
                                                 .frame(width: 241, height: 34, alignment: .leading)
                                                 .padding(.leading, 20)
                                                 .padding(.top, 4)
+                                            
                                             Spacer()
                                         }
                                         
                                     )
-                                    .onTapGesture {
-                                        if schoolClicked == "Elk Grove" {
+                                    .onTapGesture 
+                                    {
+                                        if schoolClicked == "Elk Grove"
+                                        {
                                             schoolClicked = "no school selected"
-                                        } else {
+                                        } else 
+                                        {
                                             schoolClicked = "Elk Grove"
                                         }
                                         selected = false
@@ -231,21 +261,27 @@ struct LoginView: View {
                                     .background(Color(red: 0.85, green: 0.85, blue: 0.85))
                                     .cornerRadius(6)
                                     .overlay (
-                                        HStack{
+                                        HStack
+                                        {
                                             Text("Wheeling")
                                                 .font(Font.custom("Inter", size: 25))
                                                 .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
                                                 .frame(width: 241, height: 34, alignment: .leading)
                                                 .padding(.leading, 20)
                                                 .padding(.top, 4)
+                                            
                                             Spacer()
+                                            
                                         }
                                         
                                     )
-                                    .onTapGesture {
-                                        if schoolClicked == "Wheeling" {
+                                    .onTapGesture 
+                                    {
+                                        if schoolClicked == "Wheeling" 
+                                        {
                                             schoolClicked = "no school selected"
-                                        } else {
+                                        } else 
+                                        {
                                             schoolClicked = "Wheeling"
                                         }
                                         selected = false
@@ -264,12 +300,10 @@ struct LoginView: View {
             .shadow(color: .black.opacity(0.01), radius: 4.5, x: 0, y: 22)
             .shadow(color: .black.opacity(0), radius: 5, x: 0, y: 34)
             
-            
-            
-            
-            //stay signed in checkbox
-            HStack {
-                ZStack{
+            HStack 
+            {
+                ZStack
+                {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: 24, height: 24)
@@ -282,10 +316,12 @@ struct LoginView: View {
                         .onTapGesture{
                             checkClicked = !checkClicked
                         }
-                    if checkClicked == true {
+                    if checkClicked == true 
+                    {
                         Image("Check")
                             .frame(width: 31, height: 31)
-                            .onTapGesture{
+                            .onTapGesture
+                            {
                                 checkClicked = !checkClicked
                             }
                     }
@@ -300,14 +336,15 @@ struct LoginView: View {
                     .padding(.leading, 1)
                 
                 Spacer()
+                
             }
             .frame(width: 368, height: 30)
             .padding(.top, 10)
             .padding(.bottom, 15)
             .padding(.leading, 15)
             
-            //sign in button
-            ZStack {
+            ZStack 
+            {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(width: 286, height: 49)
@@ -323,8 +360,10 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .frame(width: 268, height: 42, alignment: .top)
                     .padding(.top, 17)
-                    .onTapGesture {
-                        if schoolClicked != "no school selected" {
+                    .onTapGesture 
+                    {
+                        if schoolClicked != "no school selected" 
+                        {
                             viewRouter.currentPage = .cashcred
                         }
                     }

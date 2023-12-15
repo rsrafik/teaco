@@ -1,20 +1,25 @@
 import SwiftUI
 
-class AmountDue: ObservableObject {
+class AmountDue: ObservableObject 
+{
     @Published var amountDue: Double = 0
 }
 
-class ChangeDue: ObservableObject {
+class ChangeDue: ObservableObject 
+{
     @Published var changeDue: Double = 0
 }
 
-struct ContentView: View {
+struct ContentView: View 
+{
     @StateObject var viewRouter: ViewRouter
     @StateObject var amountDue = AmountDue()
     @StateObject var changeDue = ChangeDue()
     
-    var body: some View {
-        switch viewRouter.currentPage {
+    var body: some View 
+    {
+        switch viewRouter.currentPage
+        {
         case .login:
             LoginView(viewRouter: viewRouter)
         case .cashcred:
@@ -32,6 +37,5 @@ struct ContentView: View {
         case .edit:
             EditView(viewRouter:viewRouter)
         }
-        
     }
 }

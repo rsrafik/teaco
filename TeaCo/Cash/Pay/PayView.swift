@@ -1,25 +1,33 @@
 import SwiftUI
 
 struct PayView: View {
+    
+    @EnvironmentObject var amountDue: AmountDue
+    @EnvironmentObject var changeDue: ChangeDue
     @StateObject var viewRouter:ViewRouter
     @State var totalImages:[AnyView] = []
     @State var totalMoney: [Double] = []
-    @EnvironmentObject var amountDue: AmountDue
-    @EnvironmentObject var changeDue: ChangeDue
-    
-    func sum() -> Double {
+
+    func sum() -> Double 
+    {
         var tot: Double = 0
-        for order in totalMoney {
+        for order in totalMoney 
+        {
             tot += order
         }
         return (tot * 100).rounded() / 100
     }
     
-    var body: some View {
-        ZStack {
-            VStack {
-                HStack{
-                    VStack{
+    var body: some View 
+    {
+        ZStack 
+        {
+            VStack 
+            {
+                HStack
+                {
+                    VStack
+                    {
                         Text("Due: \(String(format: "$%.2f", amountDue.amountDue))")
                             .font(
                                 Font.custom("Inter", size: 65)
@@ -29,13 +37,14 @@ struct PayView: View {
                             .foregroundColor(Color(red: 0.99, green: 0.4, blue: 0.1))
                             .frame(alignment: .center)
                             .padding(.top,35)
+                        
                         Spacer()
+                        
                         Rectangle()
                             .foregroundColor(.clear)
                             .frame(maxWidth: 530, maxHeight: .infinity)
                             .background(Color(red: 0.91, green: 0.91, blue: 0.91))
                             .cornerRadius(20)
-                        
                             .shadow(color: .black.opacity(0.13), radius: 7, x: 2, y: 6)
                             .shadow(color: .black.opacity(0.11), radius: 13, x: 8, y: 25)
                             .shadow(color: .black.opacity(0.07), radius: 17.5, x: 17, y: 56)
@@ -47,14 +56,17 @@ struct PayView: View {
                                     .stroke(Color(red: 0.32, green: 0.21, blue: 0.16), lineWidth: 4)
                             )
                             .overlay(
-                                ScrollView {
-                                    VStack {
-                                        ForEach(0..<totalImages.count, id: \.self) { index in
+                                ScrollView 
+                                {
+                                    VStack 
+                                    {
+                                        ForEach(0..<totalImages.count, id: \.self) 
+                                        { index in
                                             totalImages[index]
                                         }
                                     }
                                 }
-                                    .padding(.top,20)
+                                .padding(.top,20)
                             )
                             .offset(x:-21, y:25)
                     }
@@ -64,88 +76,110 @@ struct PayView: View {
                         .foregroundColor(.clear)
                         .background(Color.clear)
                         .overlay(
-                            HStack{
+                            HStack
+                            {
                                 Spacer()
-                                VStack{
+                                VStack
+                                {
                                     Spacer()
                                     Penny()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(Penny()))
                                             totalMoney.append(0.01)
-                                            
-                                            
                                         }
 
                                     Spacer()
                                         
                                     Nickel()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(Nickel()))
                                             totalMoney.append(0.05)
                                         }
 
                                     Spacer()
+                                    
                                     Dime()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(Dime()))
                                             totalMoney.append(0.1)
                                         }
 
                                     Spacer()
+                                    
                                     Quarter()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(Quarter()))
                                             totalMoney.append(0.25)
                                         }
 
                                     Spacer()
+                                    
                                 }
                                 Spacer()
-                                VStack{
+                                
+                                VStack
+                                {
                                     Spacer()
                                     OneDollar()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(OneDollar()))
                                             totalMoney.append(1)
                                             
                                         }
 
                                     Spacer()
+                                    
                                     FiveDollar()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(FiveDollar()))
                                             totalMoney.append(5)
                                         }
 
                                     Spacer()
+                                    
                                     TenDollar()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(TenDollar()))
                                             totalMoney.append(10)
                                         }
 
                                     Spacer()
+                                    
                                     TwentyDollar()
-                                        .onTapGesture {
+                                        .onTapGesture 
+                                        {
                                             totalImages.append(AnyView(TwentyDollar()))
                                             totalMoney.append(20)
                                         }
 
                                     Spacer()
+                                    
                                 }
+                                
                                 Spacer()
+                                
                             }
-                            
                         )
                 }
+                
                 Spacer()
+                
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(maxWidth: .infinity, maxHeight: 164)
                     .background(Color(red: 0.32, green: 0.21, blue: 0.16))
                     .overlay (
-                        HStack{
-                            VStack{
+                        HStack
+                        {
+                            VStack
+                            {
                                 Spacer()
                                 
                                 Rectangle()
@@ -160,10 +194,9 @@ struct PayView: View {
                                             .foregroundColor(.white)
                                             .frame(width: 151, height: 34, alignment: .center)
                                             .offset(y:2)
-                                            
-                                        
                                     )
-                                    .onTapGesture{
+                                    .onTapGesture
+                                    {
                                         totalImages.removeAll()
                                     }
                                 
@@ -182,11 +215,13 @@ struct PayView: View {
                                             .frame(width: 151, height: 34, alignment: .center)
                                             .offset(y:2)
                                     )
-                                    .onTapGesture {
+                                    .onTapGesture 
+                                    {
                                         viewRouter.currentPage = .order
                                     }
                                 
                                 Spacer()
+                                
                             }
                             .padding(.horizontal, 25)
                             
@@ -216,20 +251,19 @@ struct PayView: View {
                                 .padding(.trailing, 50)
                                 .onTapGesture {
                                     changeDue.changeDue = sum() - amountDue.amountDue
-                                    if changeDue.changeDue == 0 {
+                                    if changeDue.changeDue == 0 
+                                    {
                                         viewRouter.currentPage = .cashcred
                                         amountDue.amountDue = 0
-                                    } else if changeDue.changeDue > 0 {
+                                    } else if changeDue.changeDue > 0 
+                                    {
                                         viewRouter.currentPage = .change
                                         amountDue.amountDue = 0
                                     }
-                                    
                                 }
-                            
                         }
                     )
             }
         }
-        
     }
 }

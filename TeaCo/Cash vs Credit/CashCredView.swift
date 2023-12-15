@@ -1,37 +1,44 @@
 import SwiftUI
 
-struct CashCredView: View {
-    @StateObject var viewRouter:ViewRouter
+struct CashCredView: View 
+{
     
+    @EnvironmentObject var productData: ProductData
+    @StateObject var viewRouter:ViewRouter
     @State var passwordShare = false
     @State var passwordEdit = false
     @State private var isPasswordVisible: Bool = false
     @State var animate = false
-    let password = "1234"
-    @EnvironmentObject var productData: ProductData
-    
     @State private var text: String = ""
+    let password = "1234"
     
-    var body: some View {
-        ZStack{
-            VStack(alignment: .center, spacing: nil) {
+    var body: some View 
+    {
+        ZStack
+        {
+            VStack(alignment: .center, spacing: nil)
+            {
                 HStack{
                     Image("Share")
-                        .onTapGesture {
+                        .onTapGesture 
+                        {
                             passwordShare.toggle()
-                            withAnimation (.easeInOut(duration: 0.3) ){
+                            withAnimation (.easeInOut(duration: 0.3) )
+                            {
                                 animate.toggle()
                             }
-                            
                         }
+                    
                     Spacer()
+                    
                     Text("Edit")
                         .font(Font.custom("Inter", size: 40))
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(red: 0, green: 0.48, blue: 1))
                         .frame(width: 119, height: 59, alignment: .top)
                         .padding(.top,20)
-                        .onTapGesture {
+                        .onTapGesture 
+                        {
                             passwordEdit.toggle()
                             withAnimation (.easeInOut(duration: 0.3) ){
                                 animate.toggle()
@@ -43,10 +50,11 @@ struct CashCredView: View {
                 .padding(.horizontal, 20)
                 
                 
-                Spacer() // This will push the next HStack to the center
+                Spacer()
                 
-                HStack {
-                    Spacer() // Spacer on the left side
+                HStack 
+                {
+                    Spacer()
                     
                     Rectangle()
                         .foregroundColor(.clear)
@@ -70,7 +78,7 @@ struct CashCredView: View {
                             viewRouter.currentPage = .order
                         }
                     
-                    Spacer() // Spacer between the rectangles
+                    Spacer()
                     
                     Rectangle()
                         .foregroundColor(.clear)
@@ -91,31 +99,37 @@ struct CashCredView: View {
                                 .frame(width: 327, height: 74, alignment: .top)
                         )
                     
-                    Spacer() // Spacer on the right side
+                    Spacer()
+                    
                 }
                 
-                Spacer() // This will push the above HStack to the center
+                Spacer()
                 
             }
-            .frame(maxHeight: .infinity) // This will make the VStack take up the entire height of the screen
+            .frame(maxHeight: .infinity)
             
             
-            if passwordShare || passwordEdit {
+            if passwordShare || passwordEdit 
+            {
                 ZStack{
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color.gray.opacity(0.01))
-                        .onTapGesture {
-                            if passwordShare {
+                        .onTapGesture 
+                        {
+                            if passwordShare 
+                            {
                                 passwordShare = false
-                            } else {
+                            } else 
+                            {
                                 passwordEdit = false
                             }
                             animate = false
                             isPasswordVisible = false
                             text = ""
                         }
-                    if animate {
+                    if animate 
+                    {
                         Rectangle()
                             .foregroundColor(.clear)
                             .frame(width: 505, height: 275)
@@ -127,8 +141,11 @@ struct CashCredView: View {
                             .shadow(color: .black.opacity(0.02), radius: 35, x: -40, y: 171)
                             .shadow(color: .black.opacity(0), radius: 38.5, x: -62, y: 268)
                             .overlay(
-                                VStack{
+                                VStack
+                                {
+                                    
                                     Spacer()
+                                    
                                     Text("PASSWORD")
                                         .font(
                                             Font.custom("Inter", size: 40)
@@ -140,33 +157,39 @@ struct CashCredView: View {
                                         .frame(width: 315, height: 58, alignment: .top)
                                         .padding(.top, 15)
                                     
-                                    if isPasswordVisible {
+                                    if isPasswordVisible 
+                                    {
                                         TextField("Enter password", text: $text)
                                             .padding(.horizontal)
                                             .frame(width: 410, height: 43)
                                             .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                                             .cornerRadius(10)
                                             .overlay(
-                                                HStack {
+                                                HStack 
+                                                {
                                                     Spacer()
                                                     Image(systemName: "eye.fill")
-                                                        .onTapGesture {
+                                                        .onTapGesture 
+                                                        {
                                                             isPasswordVisible.toggle()
                                                         }
                                                 }
                                                     .padding(.horizontal)
                                             )
-                                    } else {
+                                    } else 
+                                    {
                                         SecureField("Enter password", text: $text)
                                             .padding(.horizontal)
                                             .frame(width: 410, height: 43)
                                             .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                                             .cornerRadius(10)
                                             .overlay(
-                                                HStack {
+                                                HStack 
+                                                {
                                                     Spacer()
                                                     Image(systemName: "eye.slash.fill")
-                                                        .onTapGesture {
+                                                        .onTapGesture 
+                                                        {
                                                             isPasswordVisible.toggle()
                                                         }
                                                 }
@@ -174,10 +197,13 @@ struct CashCredView: View {
                                             )
                                     }
                                     
-                                    
                                     Spacer()
-                                    HStack {
+                                    
+                                    HStack 
+                                    {
+                                        
                                         Spacer()
+                                        
                                         Rectangle()
                                             .foregroundColor(.clear)
                                             .frame(width: 132, height: 41)
@@ -190,11 +216,14 @@ struct CashCredView: View {
                                                     .foregroundColor(.white)
                                                     .frame(width: 99.85492, height: 21, alignment: .center)
                                             )
-                                            .onTapGesture {
-                                                if passwordShare {
+                                            .onTapGesture 
+                                            {
+                                                if passwordShare 
+                                                {
                                                     passwordShare = false
                                                     
-                                                } else {
+                                                } else 
+                                                {
                                                     passwordEdit = false
                                                 }
                                                 animate = false
@@ -203,6 +232,7 @@ struct CashCredView: View {
                                             }
                                         
                                         Spacer()
+                                        
                                         Rectangle()
                                             .foregroundColor(.clear)
                                             .frame(width: 132, height: 41)
@@ -215,35 +245,31 @@ struct CashCredView: View {
                                                     .foregroundColor(.white)
                                                     .frame(width: 99.85492, height: 21, alignment: .center)
                                             )
-                                            .onTapGesture {
-                                                if text == password {
-                                                    if passwordEdit {
+                                            .onTapGesture 
+                                            {
+                                                if text == password
+                                                {
+                                                    if passwordEdit 
+                                                    {
                                                         viewRouter.currentPage = .edit
-                                                        loadData(school: "Hersey") { loadedProducts in
+                                                        loadData(school: "Hersey") 
+                                                        { loadedProducts in
                                                             productData.products = loadedProducts
                                                         }
-                                                        
-                                                        
                                                     }
                                                 }
                                             }
                                         
-                                        
                                         Spacer()
                                     }
                                     .padding(.bottom, 10)
+                                    
                                     Spacer()
                                 }
                             )
                     }
-                    
                 }
-                
             }
-            
-            
-            
         }
     }
-    
 }
