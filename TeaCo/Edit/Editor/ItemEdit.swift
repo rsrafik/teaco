@@ -7,7 +7,7 @@ struct ItemEdit: View
 {
     
     @EnvironmentObject var productData: ProductData
-    @StateObject private var photoSelectorVM = PhotoSelectorViewModel()
+    @StateObject private var vm = PhotoSelectorViewModel()
     @State private var isClicked = false
     @Binding var data: CustomData
     var onDelete: (() -> Void)?
@@ -18,7 +18,7 @@ struct ItemEdit: View
             HStack 
             {
                 PhotosPicker(
-                    selection: $photoSelectorVM.selectedPhotos,
+                    selection: $vm.selectedPhotos,
                     maxSelectionCount: 1,
                     matching: .images
                 ) 
@@ -28,13 +28,8 @@ struct ItemEdit: View
                         .offset(y: 25)
                         .offset(x: -5)
                 }
-                .onChange(of: photoSelectorVM.selectedPhotos) 
-                { _ in
-                    Task
-                    {
-                        print(photoSelectorVM.selectedPhotos)
-                        await photoSelectorVM.convertDataToImage()
-                    }
+                .onChange(of: vm.selectedPhotos) { _, _ in
+                    vm.convertDataToImage(id:data.id)
                 }
                 
                 Spacer()
@@ -51,7 +46,7 @@ struct ItemEdit: View
 
             Group 
             {
-                if let image = photoSelectorVM.images.first 
+                if let image = vm.images.first
                 {
                     Image(uiImage: image)
                         .resizable()

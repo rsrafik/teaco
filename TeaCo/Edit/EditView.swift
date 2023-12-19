@@ -12,7 +12,7 @@ class ProductData: ObservableObject
     @Published var addedProducts: [CustomData] = []
     @Published var comboProducts: [CustomData] = []
     @Published var images: [Images] = []
-    
+    @Published var id: String = ""
     func updateImage(for id: String, with newImage: UIImage) 
     {
         if let index = images.firstIndex(where: { $0.id == id }) {
@@ -192,6 +192,7 @@ struct EditView: View
                 }
             })
         }
+        print(productData.images)
     }
 
 }
