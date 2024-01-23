@@ -198,6 +198,8 @@ struct PayView: View {
                                     .onTapGesture
                                     {
                                         totalImages.removeAll()
+                                        totalMoney.removeAll()
+                                        
                                     }
                                 
                                 Spacer()

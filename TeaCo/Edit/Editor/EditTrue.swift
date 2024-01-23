@@ -40,8 +40,17 @@ struct EditTrue: View {
             .offset(y: -25)
             .onAppear 
             {
-                loadData(school: "Hersey") { loadedProducts in
+                loadData(school: productData.school) { loadedProducts in
                     productData.products = loadedProducts
+                }
+                fetchImagesWithNames (schoolName: productData.school) { imagesArray in
+                    guard let imagesArray = imagesArray else {
+                        return
+                    }
+
+                    for imageStruct in imagesArray {
+                        productData.images.append(Images(id: imageStruct.id, image: imageStruct.image))
+                    }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

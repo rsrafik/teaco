@@ -1,8 +1,6 @@
 import SwiftUI
 import PhotosUI
 
-import PhotosUI
-
 struct ItemEdit: View 
 {
     
@@ -29,7 +27,7 @@ struct ItemEdit: View
                         .offset(x: -5)
                 }
                 .onChange(of: vm.selectedPhotos) { _, _ in
-                    vm.convertDataToImage(id:data.id)
+                    vm.convertDataToImage(id:data.id, school: productData.school)
                 }
                 
                 Spacer()
@@ -44,20 +42,25 @@ struct ItemEdit: View
             }
             .zIndex(2)
 
-            Group 
-            {
-                if let image = vm.images.first
-                {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                } else 
-                {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .background(Color(red: 0.85, green: 0.85, blue: 0.85))
-                }
-            }
+            Group {
+                if let image = vm.images.first {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else if let initialImage = productData.images.first(where: { $0.id == data.id })?.image {
+                                Image(uiImage: initialImage)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Rectangle()
+                                    .foregroundColor(.clear)
+                                    .background(Color(red: 0.85, green: 0.85, blue: 0.85))
+                                    .overlay(
+                                        Image("NoImage")
+                                            .frame(width: 100, height: 100)
+                                    )
+                            }
+                        }
             .foregroundColor(.clear)
             .frame(width: 199, height: 273)
             .background(Color(red: 0.85, green: 0.85, blue: 0.85))

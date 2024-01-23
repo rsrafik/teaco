@@ -76,6 +76,15 @@ struct CashCredView: View
                         )
                         .onTapGesture {
                             viewRouter.currentPage = .order
+                            fetchImagesWithNames (schoolName: productData.school) { imagesArray in
+                                guard let imagesArray = imagesArray else {
+                                    return
+                                }
+
+                                for imageStruct in imagesArray {
+                                    productData.images.append(Images(id: imageStruct.id, image: imageStruct.image))
+                                }
+                            }
                         }
                     
                     Spacer()
@@ -113,8 +122,9 @@ struct CashCredView: View
             {
                 ZStack{
                     Rectangle()
+                        .foregroundColor(.clear)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.gray.opacity(0.01))
+                        .background(Color(red: 0.35, green: 0.35, blue: 0.35).opacity(0.56))
                         .onTapGesture 
                         {
                             if passwordShare 
@@ -143,7 +153,6 @@ struct CashCredView: View
                             .overlay(
                                 VStack
                                 {
-                                    
                                     Spacer()
                                     
                                     Text("PASSWORD")
@@ -252,10 +261,20 @@ struct CashCredView: View
                                                     if passwordEdit 
                                                     {
                                                         viewRouter.currentPage = .edit
-                                                        loadData(school: "Hersey") 
+                                                        loadData(school: productData.school) 
                                                         { loadedProducts in
                                                             productData.products = loadedProducts
                                                         }
+                                                        fetchImagesWithNames (schoolName: productData.school) { imagesArray in
+                                                            guard let imagesArray = imagesArray else {
+                                                                return
+                                                            }
+
+                                                            for imageStruct in imagesArray {
+                                                                productData.images.append(Images(id: imageStruct.id, image: imageStruct.image))
+                                                            }
+                                                        }
+                                                        
                                                     }
                                                 }
                                             }

@@ -3,6 +3,7 @@ import FirebaseCore
 import FirebaseDatabase
 import FirebaseStorage
 import Combine
+import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate 
 {
@@ -81,7 +82,38 @@ class Images: ObservableObject, Identifiable
     }
 }
 
+func fetchImagesWithNames(schoolName: String, completion: @escaping ([Images]?) -> Void) {
+    let storage = Storage.storage()
+        let storageRef = storage.reference().child(schoolName)
 
+        storageRef.listAll { (result, error) in
+            if let error = error {
+                completion(nil)
+                return
+            }
+
+            var imagePairs: [Images] = []
+            let group = DispatchGroup()
+
+            for item in result!.items {
+                group.enter()
+
+                // Download each image
+                item.getData(maxSize: 4 * 1024 * 1024) { data, error in
+                    if let error = error {
+                    } else if let data = data, let image = UIImage(data: data) {
+                        let imageName = item.name
+                        imagePairs.append(Images(id: imageName, image: image))
+                    }
+                    group.leave()
+                }
+            }
+
+            group.notify(queue: .main) {
+                completion(imagePairs)
+            }
+        }
+    }
 //func loadImages(school: String, products: [CustomData], completion: @escaping ([Images]) -> Void) {
 //    var images: [Images] = []
 //

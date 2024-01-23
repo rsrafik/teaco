@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct OrderView: View {
+    
     @StateObject var viewRouter:ViewRouter
     @State private var products: [CustomData] = []
     @State var owed: [Order] = []
     @State var total:Double = 0
     @EnvironmentObject var amountDue: AmountDue
+    @EnvironmentObject var productData: ProductData
     
     func sumOrder() -> Double 
     {
@@ -85,7 +87,7 @@ struct OrderView: View {
                         }
                         .onAppear 
                             {
-                            loadData(school: "Hersey") { loadedProducts in
+                                loadData(school: productData.school) { loadedProducts in
                                 self.products = loadedProducts
                             }
                         }

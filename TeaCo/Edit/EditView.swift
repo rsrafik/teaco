@@ -1,11 +1,12 @@
 import SwiftUI
 import Firebase
 
-let ref = Database.database().reference().child("Hersey").child("Products")
+
 
 class ProductData: ObservableObject 
 {
     
+    @StateObject private var vm = PhotoSelectorViewModel()
     @Published var selectedProducts: [CustomData] = []
     @Published var deletedItems: [CustomData] = []
     @Published var products: [CustomData] = []
@@ -13,7 +14,8 @@ class ProductData: ObservableObject
     @Published var comboProducts: [CustomData] = []
     @Published var images: [Images] = []
     @Published var id: String = ""
-    func updateImage(for id: String, with newImage: UIImage) 
+    @Published var school: String = ""
+    func updateImage(for id: String, with newImage: UIImage)
     {
         if let index = images.firstIndex(where: { $0.id == id }) {
             images[index].image = newImage
@@ -114,6 +116,16 @@ struct EditView: View
                             {
                                 saveDeletedItems()
                                 saveAddNewProduct()
+                                productData.images.removeAll()
+                                fetchImagesWithNames (schoolName: productData.school) { imagesArray in
+                                    guard let imagesArray = imagesArray else {
+                                        return
+                                    }
+
+                                    for imageStruct in imagesArray {
+                                        productData.images.append(Images(id: imageStruct.id, image: imageStruct.image))
+                                    }
+                                }
                             }
                         
                         Text("CANCEL")
@@ -125,10 +137,21 @@ struct EditView: View
                             {
                                 editButton = false
                                 productData.addedProducts.removeAll()
-                                loadData(school: "Hersey") 
+                                loadData(school: productData.school)
                                 { loadedProducts in
                                                     productData.products = loadedProducts
                                 }
+                                productData.images.removeAll()
+                                fetchImagesWithNames (schoolName: productData.school) { imagesArray in
+                                    guard let imagesArray = imagesArray else {
+                                        return
+                                    }
+
+                                    for imageStruct in imagesArray {
+                                        productData.images.append(Images(id: imageStruct.id, image: imageStruct.image))
+                                    }
+                                }
+                                
                             }
                     }
                     .offset(y:15)
@@ -153,8 +176,8 @@ struct EditView: View
     {
         for item in productData.deletedItems 
         {
-            ref.child(item.id).removeValue { error, _ in
-                if let error = error 
+            Database.database().reference().child(productData.school).child("Products").child(item.id).removeValue { error, _ in
+                if let error = error
                 {
                 } else 
                 {
@@ -181,7 +204,7 @@ struct EditView: View
     {
         for product in productData.products 
         {
-            let productRef = ref.child(product.id)
+            let productRef = Database.database().reference().child(productData.school).child("Products").child(product.id)
             productRef.observeSingleEvent(of: .value, with: { snapshot in
                 if snapshot.exists() 
                 {
@@ -192,7 +215,6 @@ struct EditView: View
                 }
             })
         }
-        print(productData.images)
     }
 
 }

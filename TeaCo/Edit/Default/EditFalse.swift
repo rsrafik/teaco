@@ -28,6 +28,8 @@ struct EditFalse: View {
                     ForEach(productData.products) 
                     { product in
                         Item(data: product)
+                            .onAppear(
+                            )
                     }
                 }
             }

@@ -3,6 +3,7 @@ import SwiftUI
 struct LoginView: View 
 {
     @StateObject var viewRouter:ViewRouter
+    @EnvironmentObject var productData: ProductData
     
     @State var selected = false;
     @State var schoolClicked = "no school selected"
@@ -105,7 +106,7 @@ struct LoginView: View
                                     .overlay (
                                         HStack
                                         {
-                                            Text("John Hersey")
+                                            Text("Hersey")
                                                 .font(Font.custom("Inter", size: 25))
                                                 .foregroundColor(Color(red: 0.55, green: 0.55, blue: 0.55))
                                                 .frame(width: 241, height: 34, alignment: .leading)
@@ -120,12 +121,12 @@ struct LoginView: View
                                     .onTapGesture 
                                     {
                                         selected = false
-                                        if schoolClicked == "John Hersey" 
+                                        if schoolClicked == "Hersey"
                                         {
                                             schoolClicked = "no school selected"
                                         } else 
                                         {
-                                            schoolClicked = "John Hersey"
+                                            schoolClicked = "Hersey"
                                         }
                                     }
                                 
@@ -364,6 +365,7 @@ struct LoginView: View
                     {
                         if schoolClicked != "no school selected" 
                         {
+                            productData.school = schoolClicked
                             viewRouter.currentPage = .cashcred
                         }
                     }

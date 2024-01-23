@@ -34,7 +34,7 @@ class PhotoSelectorViewModel: ObservableObject
         selectedPhotos.removeAll()
     }
     
-    func convertDataToImage(id:String)
+    func convertDataToImage(id:String, school: String)
     {
         // reset the images array before adding more/new photos
         images.removeAll()
@@ -52,6 +52,15 @@ class PhotoSelectorViewModel: ObservableObject
                         }
                     }
                     let img = Images(id:id, image: images[0])
+//                    uploadToFirebase(id: img.id, image: img.image)
+                    uploadToFirebase(img.image, imageName: img.id, school: school) { result in
+                        switch result {
+                        case .success(let url):
+                            return
+                        case .failure(let error):
+                            return
+                        }
+                    }
                 }
             }
         }
@@ -59,23 +68,59 @@ class PhotoSelectorViewModel: ObservableObject
         selectedPhotos.removeAll()
     }
     
-    func uploadToFirebase(id:String) {
-        let storageRef = Storage.storage().reference().child("\(id).jpg")
+    func uploadToFirebase(_ image: UIImage, imageName: String, school: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.75) else {
+            completion(.failure(UploadImageError.failedToGetImageData))
+            return
+        }
 
-        let uploadMetaData = StorageMetadata()
-        uploadMetaData.contentType = "image/jpeg"
-        
-        
-        let imageData: Data = (images.first!.jpegData(compressionQuality: 0.8))!
-        
-        storageRef.putData(imageData, metadata: uploadMetaData) { (metadata, error) in
-            if error != nil {
-                print("Error \(String(describing: error?.localizedDescription))")
+        let storageRef = Storage.storage().reference().child("\(school)/\(imageName)")
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        // Check if the image already exists
+        storageRef.getMetadata { (existingMetadata, error) in
+            if let error = error as NSError?, error.domain == StorageErrorDomain, error.code == StorageErrorCode.objectNotFound.rawValue {
+                // The image does not exist, proceed with the upload
+                self.uploadImage(storageRef: storageRef, imageData: imageData, metadata: metadata, completion: completion)
+            } else if existingMetadata != nil {
+                // The image exists, replace it with the new image
+                self.uploadImage(storageRef: storageRef, imageData: imageData, metadata: metadata, completion: completion)
             } else {
-                print("Complete")
+                // Some other error occurred
+                completion(.failure(error ?? UploadImageError.unknownError))
             }
         }
     }
+
+    private func uploadImage(storageRef: StorageReference, imageData: Data, metadata: StorageMetadata, completion: @escaping (Result<URL, Error>) -> Void) {
+        storageRef.putData(imageData, metadata: metadata) { metadata, error in
+            guard metadata != nil else {
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(UploadImageError.unknownError))
+                }
+                return
+            }
+
+            storageRef.downloadURL { url, error in
+                if let error = error {
+                    completion(.failure(error))
+                } else if let url = url {
+                    completion(.success(url))
+                } else {
+                    completion(.failure(UploadImageError.unknownError))
+                }
+            }
+        }
+    }
+
+    enum UploadImageError: Error {
+        case failedToGetImageData
+        case unknownError
+    }
+    
 }
 
 struct PhotoSelectorView: View 
