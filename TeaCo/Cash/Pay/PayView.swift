@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PayView: View {
     
+    @EnvironmentObject var productData: ProductData
     @EnvironmentObject var amountDue: AmountDue
     @EnvironmentObject var changeDue: ChangeDue
     @StateObject var viewRouter:ViewRouter
@@ -34,7 +35,7 @@ struct PayView: View {
                                     .weight(.bold)
                             )
                             .multilineTextAlignment(.center)
-                            .foregroundColor(Color(red: 0.99, green: 0.4, blue: 0.1))
+                            .foregroundColor(hexStringToColor(productData.subColor))
                             .frame(alignment: .center)
                             .padding(.top,35)
                         
@@ -53,7 +54,7 @@ struct PayView: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
                                     .inset(by: 2)
-                                    .stroke(Color(red: 0.32, green: 0.21, blue: 0.16), lineWidth: 4)
+                                    .stroke(hexStringToColor(productData.mainColor), lineWidth: 4)
                             )
                             .overlay(
                                 ScrollView 
@@ -174,7 +175,7 @@ struct PayView: View {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(maxWidth: .infinity, maxHeight: 164)
-                    .background(Color(red: 0.32, green: 0.21, blue: 0.16))
+                    .background(hexStringToColor(productData.mainColor))
                     .overlay (
                         HStack
                         {
@@ -185,7 +186,7 @@ struct PayView: View {
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 151, height: 50)
-                                    .background(Color(red: 0.99, green: 0.4, blue: 0.1))
+                                    .background(hexStringToColor(productData.subColor))
                                     .cornerRadius(20)
                                     .overlay(
                                         Text("CLEAR")
@@ -207,7 +208,7 @@ struct PayView: View {
                                 Rectangle()
                                     .foregroundColor(.clear)
                                     .frame(width: 151, height: 50)
-                                    .background(Color(red: 0.99, green: 0.4, blue: 0.1))
+                                    .background(hexStringToColor(productData.subColor))
                                     .cornerRadius(20)
                                     .overlay(
                                         Text("BACK")
@@ -246,7 +247,7 @@ struct PayView: View {
                                     Text("CHANGE")
                                         .font(Font.custom("Inter", size: 50))
                                         .multilineTextAlignment(.center)
-                                        .foregroundColor(Color(red: 0.99, green: 0.4, blue: 0.1))
+                                        .foregroundColor(hexStringToColor(productData.subColor))
                                         .frame(width: 372, height: 39, alignment: .center)
                                         .offset(y:2)
                                 )

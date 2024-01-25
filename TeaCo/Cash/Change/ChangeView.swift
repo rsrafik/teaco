@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ChangeView: View {
+    
+    @EnvironmentObject var productData: ProductData
     @StateObject var viewRouter:ViewRouter
     @EnvironmentObject var changeDue: ChangeDue
     @State var seriesImage: [AnyView] = []
@@ -16,7 +18,7 @@ struct ChangeView: View {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, maxHeight: 164)
-                .background(Color(red: 0.32, green: 0.21, blue: 0.16))
+                .background(hexStringToColor(productData.mainColor))
                 .overlay(
                     Text("Return: \(String(format: "$%.2f", changeDue.changeDue))")
                         .font(
@@ -51,7 +53,7 @@ struct ChangeView: View {
                         Rectangle()
                             .foregroundColor(.clear)
                             .frame(width: 372, height: 93)
-                            .background(Color(red: 0.99, green: 0.4, blue: 0.1))
+                            .background(hexStringToColor(productData.subColor))
                             .cornerRadius(37.08609)
                             .shadow(color: .black.opacity(0.13), radius: 2, x: -1, y: 1)
                             .shadow(color: .black.opacity(0.11), radius: 3, x: -3, y: 5)

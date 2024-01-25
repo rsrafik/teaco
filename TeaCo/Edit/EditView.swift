@@ -15,6 +15,9 @@ class ProductData: ObservableObject
     @Published var images: [Images] = []
     @Published var id: String = ""
     @Published var school: String = ""
+    @Published var mainColor: String = ""
+    @Published var subColor: String = ""
+    
     func updateImage(for id: String, with newImage: UIImage)
     {
         if let index = images.firstIndex(where: { $0.id == id }) {

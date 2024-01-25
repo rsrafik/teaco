@@ -366,6 +366,12 @@ struct LoginView: View
                         if schoolClicked != "no school selected" 
                         {
                             productData.school = schoolClicked
+                            fetchColors(productData.school) 
+                            { fetchedColors in
+                                productData.mainColor = fetchedColors["main"]!
+                                productData.subColor = fetchedColors["sub"]!
+                            }
+                            
                             viewRouter.currentPage = .cashcred
                         }
                     }

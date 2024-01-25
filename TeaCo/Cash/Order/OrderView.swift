@@ -43,7 +43,7 @@ struct OrderView: View {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(width: 151, height: 50)
-                    .background(Color(red: 0.99, green: 0.4, blue: 0.1))
+                    .background(hexStringToColor(productData.subColor))
                     .cornerRadius(20)
                     .overlay(
                         Text("CLEAR")
@@ -112,7 +112,7 @@ struct OrderView: View {
                                 ForEach(0..<owed.count, id: \.self) { index in
                                     RoundedRectangle(cornerRadius: 10)
                                         .frame(width: 300, height: 50)
-                                        .foregroundColor(Color(red: 0.32, green: 0.21, blue: 0.16))
+                                        .foregroundColor(hexStringToColor(productData.mainColor))
                                         .overlay(
                                             Text(owed[index].id)
                                                 .font(.title)
@@ -139,8 +139,8 @@ struct OrderView: View {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, maxHeight: 164)
-                .background(Color(red: 0.32, green: 0.21, blue: 0.16))
-                .overlay 
+                .background(hexStringToColor(productData.mainColor))
+                .overlay
                 {
                     HStack
                     {
@@ -170,7 +170,7 @@ struct OrderView: View {
                                 Text("CHECKOUT")
                                     .font(Font.custom("Inter", size: 50))
                                     .multilineTextAlignment(.center)
-                                    .foregroundColor(Color(red: 0.99, green: 0.4, blue: 0.1))
+                                    .foregroundColor(hexStringToColor(productData.subColor))
                                     .frame(width: 372, height: 39, alignment: .center)
                                     .padding(.top, 7)
                             )

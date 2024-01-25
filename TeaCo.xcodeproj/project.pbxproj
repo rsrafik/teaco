@@ -30,6 +30,9 @@
 		A4479D952AE079A5004178C6 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A4479D942AE079A5004178C6 /* FirebaseDatabaseSwift */; };
 		A4479DB32AE079A5004178C6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A4479DB22AE079A5004178C6 /* FirebaseStorage */; };
 		A4479DB52AE079A5004178C6 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A4479DB42AE079A5004178C6 /* FirebaseStorageCombine-Community */; };
+		A471CB892B62C36400A7A271 /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB882B62C36400A7A271 /* ColorFormatter.swift */; };
+		A471CB8B2B62C44800A7A271 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB8A2B62C44800A7A271 /* Firebase.swift */; };
+		A471CB8D2B62C49200A7A271 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB8C2B62C49200A7A271 /* Classes.swift */; };
 		A4F6A7782B1522CC0044EBD5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		A41308F52ADF0ADA00ADCA31 /* EditFalse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFalse.swift; sourceTree = "<group>"; };
 		A41308FA2ADF0AFE00ADCA31 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A4479D7D2AE07816004178C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A471CB882B62C36400A7A271 /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
+		A471CB8A2B62C44800A7A271 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
+		A471CB8C2B62C49200A7A271 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +106,9 @@
 				A41308D22ADF08D400ADCA31 /* ViewRouter.swift */,
 				A41308C32ADF07ED00ADCA31 /* TeaCoApp.swift */,
 				A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */,
+				A471CB882B62C36400A7A271 /* ColorFormatter.swift */,
+				A471CB8A2B62C44800A7A271 /* Firebase.swift */,
+				A471CB8C2B62C49200A7A271 /* Classes.swift */,
 				A41308C52ADF07ED00ADCA31 /* ContentView.swift */,
 				A41308C72ADF07EF00ADCA31 /* Assets.xcassets */,
 				A41308C92ADF07F000ADCA31 /* TeaCo.entitlements */,
@@ -279,6 +288,8 @@
 			files = (
 				A41308E12ADF09BC00ADCA31 /* PayView.swift in Sources */,
 				A41308DB2ADF097500ADCA31 /* ChangeView.swift in Sources */,
+				A471CB892B62C36400A7A271 /* ColorFormatter.swift in Sources */,
+				A471CB8B2B62C44800A7A271 /* Firebase.swift in Sources */,
 				A41308ED2ADF0A6D00ADCA31 /* EditView.swift in Sources */,
 				A41308E32ADF09DA00ADCA31 /* Coins.swift in Sources */,
 				A41308D32ADF08D400ADCA31 /* ViewRouter.swift in Sources */,
@@ -293,6 +304,7 @@
 				A41308C42ADF07ED00ADCA31 /* TeaCoApp.swift in Sources */,
 				A41308E52ADF0A0200ADCA31 /* Dollars.swift in Sources */,
 				A41308F42ADF0AAF00ADCA31 /* TextBox.swift in Sources */,
+				A471CB8D2B62C49200A7A271 /* Classes.swift in Sources */,
 				A41308EF2ADF0A8500ADCA31 /* EditTrue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
