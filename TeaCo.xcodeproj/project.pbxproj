@@ -33,6 +33,7 @@
 		A471CB892B62C36400A7A271 /* ColorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB882B62C36400A7A271 /* ColorFormatter.swift */; };
 		A471CB8B2B62C44800A7A271 /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB8A2B62C44800A7A271 /* Firebase.swift */; };
 		A471CB8D2B62C49200A7A271 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB8C2B62C49200A7A271 /* Classes.swift */; };
+		A471CB8F2B62D2DA00A7A271 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471CB8E2B62D2DA00A7A271 /* ProductData.swift */; };
 		A4F6A7782B1522CC0044EBD5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		A471CB882B62C36400A7A271 /* ColorFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFormatter.swift; sourceTree = "<group>"; };
 		A471CB8A2B62C44800A7A271 /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firebase.swift; sourceTree = "<group>"; };
 		A471CB8C2B62C49200A7A271 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		A471CB8E2B62D2DA00A7A271 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
 		A4F6A7772B1522CC0044EBD5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				A471CB882B62C36400A7A271 /* ColorFormatter.swift */,
 				A471CB8A2B62C44800A7A271 /* Firebase.swift */,
 				A471CB8C2B62C49200A7A271 /* Classes.swift */,
+				A471CB8E2B62D2DA00A7A271 /* ProductData.swift */,
 				A41308C52ADF07ED00ADCA31 /* ContentView.swift */,
 				A41308C72ADF07EF00ADCA31 /* Assets.xcassets */,
 				A41308C92ADF07F000ADCA31 /* TeaCo.entitlements */,
@@ -294,6 +297,7 @@
 				A41308E32ADF09DA00ADCA31 /* Coins.swift in Sources */,
 				A41308D32ADF08D400ADCA31 /* ViewRouter.swift in Sources */,
 				A41308DD2ADF098900ADCA31 /* Item.swift in Sources */,
+				A471CB8F2B62D2DA00A7A271 /* ProductData.swift in Sources */,
 				A4F6A7782B1522CC0044EBD5 /* ImagePicker.swift in Sources */,
 				A41308F62ADF0ADA00ADCA31 /* EditFalse.swift in Sources */,
 				A41308DF2ADF099E00ADCA31 /* OrderView.swift in Sources */,

@@ -371,7 +371,15 @@ struct LoginView: View
                                 productData.mainColor = fetchedColors["main"]!
                                 productData.subColor = fetchedColors["sub"]!
                             }
-                            
+                            fetchLogo(productData.school)
+                            { image in
+                                if let image = image {
+                                    productData.logo = Image(uiImage: image)
+                                } else {
+                                    // Handle the case where the image could not be fetched
+                                    return
+                                }
+                            }
                             viewRouter.currentPage = .cashcred
                         }
                     }

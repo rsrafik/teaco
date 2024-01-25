@@ -127,7 +127,7 @@ struct OrderView: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
                             .inset(by: 2)
-                            .stroke(Color(red: 0.32, green: 0.21, blue: 0.16), lineWidth: 4)
+                            .stroke(hexStringToColor(productData.mainColor), lineWidth: 4)
                             
                     )
                     .padding(.trailing, 50)
@@ -144,7 +144,7 @@ struct OrderView: View {
                 {
                     HStack
                     {
-                        Image("Huskie")
+                        productData.logo
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 114, height: 126.2000961303711)

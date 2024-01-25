@@ -102,3 +102,19 @@ func fetchColors(_ school: String, completion: @escaping ([String: String]) -> V
         completion(["main": mainColor, "sub": subColor])
     }
 }
+
+func fetchLogo(_ school: String, completion: @escaping (UIImage?) -> Void) {
+    let storage = Storage.storage()
+    let storageRef = storage.reference().child("\(school)/\(school).png")
+
+    storageRef.getData(maxSize: 4 * 1024 * 1024) { data, error in
+        if let error = error {
+            print("Error occurred: \(error)")
+            completion(nil)
+        } else if let data = data, let image = UIImage(data: data) {
+            completion(image)
+        } else {
+            completion(nil)
+        }
+    }
+}
