@@ -37,7 +37,7 @@ The interface prioritizes **sense-making over speed**, making it easier for user
 
 ## 🤝 Real-World Impact
 
-Teaco is currently used in my school district’s special education program, throughout 6 schools, and has helped students:
+Teaco is currently used in Illinois District 214 special education program, throughout 6 schools, and has helped students:
 - Participate more confidently in daily tasks
 - Communicate more clearly during transactions
 - Experience greater independence in a real-life work setting
