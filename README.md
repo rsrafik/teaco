@@ -12,6 +12,7 @@ Traditional point-of-sale systems rely heavily on numeric input, which can be ch
 - When cash is received, students select the **visual icons** of bills and coins.
 - The app **automatically calculates change**.
 - A **visual representation** shows the exact bills and coins to return, reducing cognitive load and confusion.
+- An admin can access a different view by inputting the admin password, and modify the item's images, prices, names, and more, which updates to the Firebase database.
 
 This creates a workflow that is:
 - Clear and visual  
@@ -45,7 +46,6 @@ Teaco is currently used in Illinois District 214 special education program, thro
 ## 🌱 Future Improvements
 
 - Improved receipt history
-- Customizable menu items
 - Audio support for verbal processing differences
 
 ---
